@@ -1,0 +1,22 @@
+{
+  "name": "bar-chart",
+  "version": "1.0.0",
+  "description": "freecodecamp data-visualization bar-chart challenge",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickCalderone/d3-bar-graph.git"
+  },
+  "keywords": [
+    "freecodecamp"
+  ],
+  "author": "Nick Calderone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NickCalderone/d3-bar-graph/issues"
+  },
+  "homepage": "https://github.com/NickCalderone/d3-bar-graph#readme"
+}
