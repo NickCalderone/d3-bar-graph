@@ -15,24 +15,9 @@
     </head>
     <body style="margin-left: 400px">
         <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-              document.getElementById('getMessage').onclick = function(){
-                // Add your code below this line
-          const req = new XMLHttpRequest();
-          req.open("GET",'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json',true);
-          req.send();
-          req.onload = function(){
-            const json = JSON.parse(req.responseText);
-            document.getElementsByClassName('message')[0].innerHTML = JSON.stringify(json);
-          };
-          
-          
-                // Add your code above this line
-              };
-            });
-          </script>
-<button id='getMessage'>click</button>
-<p class='message'>hey</p>
+        <button id='getMessage'>click</button>
+        <p class='message'>hey</p>
+        <script type="text/javascript" src="./script.js"></script>
+        <script type="text/javascript" src="./request.js"></script>
     </body>
 </html>
