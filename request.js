@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function(){
+ /*
+ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('getMessage').onclick = function(){
       // Add your code below this line
 const req = new XMLHttpRequest();
@@ -8,8 +9,19 @@ req.onload = function(){
   const json = JSON.parse(req.responseText);
   document.getElementsByClassName('message')[0].innerHTML = JSON.stringify(json);
 };
-
-
-      // Add your code above this line
     };
+  });
+const data = fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json')
+    .then((response) => {
+      return response.json()
+    })
+    .then(data => data)
+export default data
+*/
+fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
   });
