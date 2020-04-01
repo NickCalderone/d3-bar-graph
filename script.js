@@ -12,11 +12,7 @@ console.log(document)
         const w = 1200
         const h = 500
         const padding = 60
-        d3.select('body')
-            .append('h1')
-            .attr('id', 'title')
-            .attr('style', 'color: #e86252')
-            .text('US GDP Over Time In Billions')
+
 
         d3.select('body')
             .append('div')
@@ -31,6 +27,17 @@ console.log(document)
             .attr('width', w)
             .attr('height', h)
         // console.log(new Date(gdpValues[4][0]))
+
+        svg.append("text")
+        .attr("x", (w / 2))             
+        .attr("y", 0 + (padding / 2))
+        .attr("text-anchor", "middle")  
+        .attr('id', 'title')
+        .style("font-size", "24px") 
+        .style("text-decoration", "underline")  
+        .style('fill', '#ff5964')
+        .text("US GDP Over Time in Billions");
+
         const xScale = d3.scaleTime()
         .domain([d3.min(gdpValues, d => new Date(d[0])), d3.max(gdpValues, d => new Date(d[0]))])
         .range([ padding , w - padding ])
