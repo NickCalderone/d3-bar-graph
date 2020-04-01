@@ -11,7 +11,7 @@ console.log(document)
         // console.log('just data: :', gdpValues)
         const w = 1200
         const h = 500
-        const padding = 40
+        const padding = 60
     
         const svg = d3.select('body')
             .append('svg')
@@ -46,11 +46,11 @@ console.log(document)
         const yAxis = d3.axisLeft(yScale)
         svg.append('g')
             .attr('id', 'x-axis')
-            .attr('transform', 'translate(' + padding +',' + (h - padding) + ')')
+            .attr('transform', 'translate(0,' + (h - padding) + ')')
             .call(xAxis)
         svg.append('g')
             .attr('id', 'y-axis')
-            .attr('transform', 'translate('+ (padding) + ',' + (padding) + ')')
+            .attr('transform', 'translate('+ (padding) + ', 0)')
             .call(yAxis)
     })
     // .catch(function(error) {
