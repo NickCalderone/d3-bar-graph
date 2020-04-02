@@ -7,49 +7,48 @@ console.log(document)
     })
     .then(response => {
         const gdpValues = response.data
-        // console.log('full response :',response)
-        // console.log('just data: :', gdpValues)
         const w = 1200
         const h = 500
         const padding = 60
 
-
+        //tooltip
         d3.select('body')
             .append('div')
             .attr('id', 'tooltip')
             .attr('style', 'opacity: 0')
             .attr('style', 'position: absolute')
-   
+         //scales
+        const xScale = d3.scaleTime()
+            .domain([d3.min(gdpValues, d => new Date(d[0])), d3.max(gdpValues, d => new Date(d[0]))])
+            .range([ padding , w - padding ])
+    
+        const yScale = d3.scaleLinear()
+            .domain([0 , d3.max(gdpValues, d => d[1])])
+            .range([h - padding, padding])
+
+        const xAxis = d3.axisBottom(xScale)
+        const yAxis = d3.axisLeft(yScale)
+
+        //svg
         const svg = d3.select('body')
             .append('svg')
             .attr('x', 0)
             .attr('y', 0)
             .attr('width', w)
             .attr('height', h)
-        // console.log(new Date(gdpValues[4][0]))
 
+        //title
         svg.append("text")
-        .attr("x", (w / 2))             
-        .attr("y", 0 + (padding / 2))
-        .attr("text-anchor", "middle")  
-        .attr('id', 'title')
-        .style("font-size", "24px") 
-        .style("text-decoration", "underline")  
-        .style('fill', '#ff5964')
-        .text("US GDP Over Time in Billions");
+            .attr("x", (w / 2))             
+            .attr("y", 0 + (padding / 2))
+            .attr("text-anchor", "middle")  
+            .attr('id', 'title')
+            .style("font-size", "24px") 
+            .style("text-decoration", "underline")  
+            .style('fill', '#ff5964')
+            .text("US GDP Over Time in Billions");
 
-        const xScale = d3.scaleTime()
-        .domain([d3.min(gdpValues, d => new Date(d[0])), d3.max(gdpValues, d => new Date(d[0]))])
-        .range([ padding , w - padding ])
-        // console.log('example date: ',xScale(new Date(gdpValues[5][0])))
-    
-        const yScale = d3.scaleLinear()
-        .domain([0 , d3.max(gdpValues, d => d[1])])
-        .range([h - padding, padding])
-        // console.log('example y scale: ',yScale(gdpValues[50][1]))
-
-
-
+        //bars
         svg.selectAll('rect')
             .data(gdpValues)
             .enter()
@@ -67,15 +66,8 @@ console.log(document)
             .on('mousemove', function() {
                 d3.select('#tooltip').style('left', (d3.event.pageX+10) + 'px').style('top', (d3.event.pageY) + 'px')
                 })
-            // .append('title')
-            // .attr('id', 'tooltip')
-            // .attr('data-date', d => d[0])
-            // .text(d => (`Date: ${d[0]}\nGDP: ${d[1]} Billion`))
-
         
-
-        const xAxis = d3.axisBottom(xScale)
-        const yAxis = d3.axisLeft(yScale)
+        //axes
         svg.append('g')
             .attr('id', 'x-axis')
             .attr('transform', 'translate(0,' + (h - padding) + ')')
@@ -85,17 +77,4 @@ console.log(document)
             .attr('transform', 'translate('+ (padding) + ', 0)')
             .call(yAxis)
     })
-    // .catch(function(error) {
-    //     console.warn('this is the error: ');
-    // });
-    //bundle into function and call within last then()
-    
-
-    // const rects = (svg, gdpValues) => {
-    //     svg.selectAll('rect')
-    //         .data(gdpValues)
-    //         .enter()
-    //         .append('rect')
-    // }
-
 }
