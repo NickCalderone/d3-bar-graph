@@ -10,6 +10,7 @@ console.log(document)
         const w = 1200
         const h = 500
         const padding = 60
+        const barWidth = (w - padding * 2) / gdpValues.length
 
         //tooltip
         d3.select('body')
@@ -63,8 +64,8 @@ console.log(document)
             .attr('data-date', d => d[0])
             .attr('data-gdp', d => d[1])
             .attr('fill', '#ffe74c')
-            .attr('width', (w - padding * 2) / gdpValues.length)
-            .attr('height', d => h- padding - yScale(d[1]))
+            .attr('width', barWidth)
+            .attr('height', d => h - padding - yScale(d[1]))
             .attr('x', (d, i) => padding + ((w - 2 * padding) / gdpValues.length * i))
             .attr('y', d => (h - padding) - (h - padding - yScale(d[1]) ))
             .on('mouseover', function(d) {d3.select('#tooltip').style('opacity', 1).attr('data-date', d[0]).text(`Date: ${d[0]}, GDP: ${d[1]} Billion`)})
