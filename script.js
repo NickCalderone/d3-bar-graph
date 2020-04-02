@@ -52,7 +52,7 @@ console.log(document)
             .style("font-size", "24px") 
             .style("text-decoration", "underline")  
             .style('fill', '#ff5964')
-            .text("US GDP Over Time in Billions");
+            .text("US GDP Growth Between Jan 1947 and July 2015 in Billions");
 
         //bars
         svg.selectAll('rect')
@@ -72,7 +72,7 @@ console.log(document)
             .on('mousemove', function() {
                 d3.select('#tooltip').style('left', (d3.event.pageX+10) + 'px').style('top', (d3.event.pageY) + 'px')
                 })
-        
+
         //axes
         svg.append('g')
             .attr('id', 'x-axis')
