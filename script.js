@@ -37,7 +37,7 @@ console.log(document)
             .attr('width', w)
             .attr('height', h)
 
-        //color svg background
+        //fill 
         svg.append("rect")
             .attr("width", "100%")
             .attr("height", "100%")
@@ -52,10 +52,10 @@ console.log(document)
             .style("font-size", "24px") 
             .style("text-decoration", "underline")  
             .style('fill', '#ff5964')
-            .text("US GDP Growth Between Jan 1947 and July 2015 in Billions");
+            .text("US GDP Growth In Billions Between Jan 1947 and july 2015");
 
         //bars
-        svg.selectAll('rect')
+        svg.selectAll('rect .bar')
             .data(gdpValues)
             .enter()
             .append('rect')
@@ -72,7 +72,7 @@ console.log(document)
             .on('mousemove', function() {
                 d3.select('#tooltip').style('left', (d3.event.pageX+10) + 'px').style('top', (d3.event.pageY) + 'px')
                 })
-
+        
         //axes
         svg.append('g')
             .attr('id', 'x-axis')
