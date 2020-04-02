@@ -37,6 +37,12 @@ console.log(document)
             .attr('width', w)
             .attr('height', h)
 
+        //color svg background
+        svg.append("rect")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("fill", "#65def1");
+
         //title
         svg.append("text")
             .attr("x", (w / 2))             
